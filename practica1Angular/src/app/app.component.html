@@ -1,0 +1,36 @@
+<h1>Nuevo</h1>
+<p>
+  Codigo:<input type="number" [(ngModel)]="art.codigo"/>
+</p>
+<p>
+  Descripción: <input type="text" [(ngModel)]="art.descripcion"/>
+</p>
+<p>
+  Precio: <input type="number" [(ngModel)]="art.precio"/>
+</p>
+<p>
+  <button (click)="agregar()">Agregar</button>
+  <button (click)="modificar()">Modificar</button>
+</p>
+
+<h1>Lista de Productos</h1>
+<table border="1" *ngIf="hayRegistros(); else sinarticulos">
+<tr>
+  <td>Codigo</td>
+  <td>Descripcion</td>
+  <td>Precio</td>
+  <td>Acciones</td>
+</tr>
+<tr *ngFor="let art of articulos">
+  <td>{{art.codigo}}</td>
+  <td>{{art.descripcion}}</td>
+  <td>{{art.precio}}</td>
+  <td>
+    <button (click)="borrar(art)">Eliminar</button>&nbsp;
+    <button (click)="seleccionar(art)">Seleccionar</button>
+  </td>
+</tr>
+</table>
+<ng-template id="sinarticulos"> <p>
+  No hay nada
+</p> </ng-template>
